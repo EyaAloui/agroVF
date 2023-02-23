@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <title>AgroEasy</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+
+        <link href="{{ asset('front/assets/img/logo.png') }}" rel="icon">
+        <link href="{{ asset('') }}front/assets/img/logo.png" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="{{ asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i') }}"
+              rel="stylesheet">
+    {% endblock %}
+    {% block Css %}
+        <!-- Vendor CSS Files -->
+        <link href="{{ asset('front/assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('front/assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('front/assets/vendor/aos/aos.css') }}" rel="stylesheet">
+        <link href="{{ asset('front/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('front/assets/vendor/bootstrap-icons/bootstrap-icons.css') }} "rel="stylesheet">
+        <link href="{{ asset('front/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('front/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('front/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="{{ asset('front/assets/css/style.css') }}" rel="stylesheet">
+    {% endblock %}
+
+</head>
+
+<body>
+{% block body %}
+    <!-- ======= Top Bar ======= -->
+    <div id="topbar" class="d-flex align-items-center fixed-top">
+        <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+            <div class="align-items-center d-none d-md-flex">
+                <i class="bi bi-clock"></i> Lundi - Dimanche, 6AM to 6PM
+            </div>
+            <div class="d-flex align-items-center">
+                <i class="bi bi-phone"></i> Contactez-nous +216 57 458 544
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+<!-- ======= Header ======= -->
+{% block header %}
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+
+            <a href={{ asset("index.html") }} class="logo me-auto"><img src={{ asset('') }}"front/assets/img/logo.png" alt=""></a>
+            <a href={{ asset("index.html") }} class="logo me-auto"><img src={{ asset('') }}"front/assets/img/logo1.png" alt="" width="60%"></a>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a class="nav-link scrollto " href="#hero">Accueil</a></li>
+                    <li><a class="nav-link scrollto" href="#about">A propos</a></li>
+                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                    <li><a href="#produits"><span>Produits</span> <i class="nav-link scrollto"></i></a>
+                    <li><a class="nav-link scrollto" href="#pricing">Evènements</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+            <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline"></span>Se connecter</a>
+
+        </div>
+    </header><!-- End Header -->
+{% endblock %}
+
+<!-- ======= Hero Section ======= -->
+{% block hero %}
+    <section id="hero">
+        <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+            <div class="carousel-inner" role="listbox">
+
+                <!-- Slide 1 -->
+                <div class="carousel-item active" style="background-image: url(front/assets/img/steven.jpg)">
+                    <div class="container">
+                        <h2>Connecté au monde, <span> chaque agriculteur.</span></h2>
+
+                        <a href="#" class="btn-get-started scrollto">Se connecter</a>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-item" style="background-image: url(front/assets/img/peter.jpg)">
+                    <div class="container">
+                        <h2>Connecté au monde, <span> chaque agriculteur.</span></h2>
+                        <a href="#" class="btn-get-started scrollto">Se connecter</a>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-item" style="background-image: url(front/assets/img/loren.jpg)">
+                    <div class="container">
+
+                        <h2>Connecté au monde, <span> chaque agriculteur.</span></h2>
+                        <a href="#" class="btn-get-started scrollto">Se connecter</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Hero -->
+{% endblock %}
+
+<main id="main">
+
+
+    <!-- ======= About Us Section ======= -->
+    {% block   propos %}
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>A propos</h2>
+                    <p>AgroEasy est une exploitation agricole qui se consacre à la production végétale et animale.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <img src={{ asset('') }}"assets/img/about.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
+                        <ul>
+                            <br>
+                            <br>
+                            <li><i class="bi bi-check-circle"></i> Une meilleure gestion des exploitations agricoles et
+                                donc d'améliorer les rendements et la productivité.
+                            </li>
+                            <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate
+                                velit.
+                            </li>
+                            <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda
+                                mastiro dolore eu fugiat nulla pariatur.
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End About Us Section -->
+
+
+                  <!-- ======= Counts Section ======= -->
+        <section id="counts" class="counts">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row no-gutters">
+
+                    <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+                        <div class="count-box">
+                            <i class="fas fa-user-md"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1"
+                                  class="purecounter"></span>
+
+                            <p><strong>Doctors</strong> consequuntur quae qui deca rode</p>
+                            <a href="#">Find out more &raquo;</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+                        <div class="count-box">
+                            <i class="far fa-hospital"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="26" data-purecounter-duration="1"
+                                  class="purecounter"></span>
+                            <p><strong>Departments</strong> adipisci atque cum quia aut numquam delectus</p>
+                            <a href="#">Find out more &raquo;</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+                        <div class="count-box">
+                            <i class="fas fa-flask"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="14" data-purecounter-duration="1"
+                                  class="purecounter"></span>
+                            <p><strong>Research Lab</strong> aut commodi quaerat. Aliquam ratione</p>
+                            <a href="#">Find out more &raquo;</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+                        <div class="count-box">
+                            <i class="fas fa-award"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1"
+                                  class="purecounter"></span>
+                            <p><strong>Awards</strong> rerum asperiores dolor molestiae doloribu</p>
+                            <a href="#">Find out more &raquo;</a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Counts Section -->
+
+    {% endblock %}
+
+    <!-- ======= Services Section ======= -->
+    {% block services %}
+        <section id="services" class="services services">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Services</h2>
+                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
+                        sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
+                        ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="icon"><i class="fas fa-heartbeat"></i></div>
+                        <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+                        <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias
+                            excepturi sint occaecati cupiditate non provident</p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="icon"><i class="fas fa-pills"></i></div>
+                        <h4 class="title"><a href="">Dolor Sitema</a></h4>
+                        <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat tarad limino ata</p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="icon"><i class="fas fa-hospital-user"></i></div>
+                        <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
+                        <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                            dolore eu fugiat nulla pariatur</p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="icon"><i class="fas fa-dna"></i></div>
+                        <h4 class="title"><a href="">Magni Dolores</a></h4>
+                        <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                            deserunt mollit anim id est laborum</p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="icon"><i class="fas fa-wheelchair"></i></div>
+                        <h4 class="title"><a href="">Nemo Enim</a></h4>
+                        <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+                            praesentium voluptatum deleniti atque</p>
+                    </div>
+                    <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="icon"><i class="fas fa-notes-medical"></i></div>
+                        <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
+                        <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero
+                            tempore, cum soluta nobis est eligendi</p>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Services Section -->
+    {% endblock %}
+    <!-- ======= Appointment Section ======= -->
+
+
+    <!-- ======= Departments Section ======= -->
+    {% block produits %}
+    <section id="produits" class="produits">
+        <div class="container" data-aos="fade-up">
+            <br>
+            <br><br><br><br>
+
+
+            <div class="section-title">
+                <h2>Détails</h2>
+            </div>
+
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <ul class="nav nav-tabs flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
+                                <h4>Ce que nous faisons?</h4>
+                                <p class="fst-italic">Avec l'application AgroEasy, les clients ont la possibilité de se
+                                    procurer des produits frais de manière simple et efficace. Les produits frais sont
+                                    des denrées alimentaires qui n'ont pas subi de traitement de conservation et qui
+                                    sont généralement très appréciés pour leur qualité gustative et nutritionnelle.</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <ul class="nav nav-tabs flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
+                                <h4>Ce que nous offrons</h4>
+                                <p class="fst-italic">Avec l'application AgroEasy, les clients ont la possibilité de se
+                                    procurer des produits frais de manière simple et efficace. Les produits frais sont
+                                    des denrées alimentaires qui n'ont pas subi de traitement de conservation et qui
+                                    sont généralement très appréciés pour leur qualité gustative et nutritionnelle.</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <ul class="nav nav-tabs flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
+                                <h4>la qualité de nos produits</h4>
+                                <p class="fst-italic">Avec l'application AgroEasy, les clients ont la possibilité de se
+                                    procurer des produits frais de manière simple et efficace. Les produits frais sont
+                                    des denrées alimentaires qui n'ont pas subi de traitement de conservation et qui
+                                    sont généralement très appréciés pour leur qualité gustative et nutritionnelle.</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <section id="gallery" class="gallery">
+            <div class="container" data-aos="fade-up">
+                {% block swiper %}
+                <div class="section-title">
+                    <h2>Nos produits</h2>
+                </div>
+                <div class="gallery-slider swiper">
+                    <div class="swiper-wrapper align-items-center">
+                        <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('front/assets/img/1.jpg') }}"><img
+                                        src="{{asset("front/assets/img/1.jpg") }}" class="img-fluid" alt=""></a></div>
+                        <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('front/assets/img/3.jpg') }}"><img
+                                        src="{{asset("front/assets/img/3.jpg") }}" class="img-fluid" alt=""></a></div>
+                        <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('front/assets/img/5.jpg') }}"><img
+                                        src="{{asset("front/assets/img/5.jpg") }}" class="img-fluid" alt=""></a></div>
+                        <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('front/assets/img/6.jpg') }}"><img
+                                        src="{{asset("front/assets/img/6.jpg") }}" class="img-fluid" alt=""></a></div>
+                        <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('front/assets/img/7.jpg') }}"><img
+                                        src="{{asset("front/assets/img/7.jpg") }}" class="img-fluid" alt=""></a></div>
+                        <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('front/assets/img/8.jpg') }}"><img
+                                        src="{{asset("front/assets/img/8.jpg") }}" class="img-fluid" alt=""></a></div>
+                        <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('front/assets/img/9.jpg') }}"><img
+                                        src={{asset("front/assets/img/9.jpg") }} class="img-fluid" alt=""></a></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <a href="{{ asset('produits') }}">
+                        <button type="button" class="btn btn btn-outline-success"
+                                style="display: block;margin-left: auto;margin-right: auto;">Consult produits
+                        </button>
+                    </a>
+                </div>
+                {% endblock %}
+            </div>
+        </section>
+    </section><!-- End Departments Section -->
+    {% endblock %}
+
+
+    <!-- ======= Gallery Section ======= -->
+    <!-- End Gallery Section -->
+
+    <!-- ======= Pricing Section ======= -->
+    {% block events %}
+        <section id="pricing" class="pricing">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Evènements</h2>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="box" data-aos="fade-up">
+                            <h3>Journées des grains authentiques</h3>
+                            <a><img src="{{ asset('assets/img/11.jpg') }}" class="img-fluid" alt=""></a>
+                            <h5>08 <sup>h</sup> - 16 <sup>h</sup><span> </span></h5>
+                            <ul>
+                                <li>Merci de nous rejoindre le</li>
+                                <li>25 Novembre 2023</li>
+                            </ul>
+                            <div class="btn-wrap">
+                                <a href="#" class="btn-buy">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
+                        <div class="box" data-aos="fade-up">
+                            <h3>Visite guidée</h3>
+                            <h5><sup>$</sup>19<span> / month</span></h5>
+                            <ul>
+                                <li>Aida dere</li>
+                                <li>Nec feugiat nisl</li>
+                                <li>Nulla at volutpat dola</li>
+                                <li>Pharetra massa</li>
+                                <li class="na">Massa ultricies mi</li>
+                            </ul>
+                            <div class="btn-wrap">
+                                <a href="#" class="btn-buy">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+                        <div class="box" data-aos="fade-up">
+                            <h3>Developer</h3>
+                            <h4><sup>$</sup>29<span> / month</span></h4>
+                            <ul>
+                                <li>Aida dere</li>
+                                <li>Nec feugiat nisl</li>
+                                <li>Nulla at volutpat dola</li>
+                                <li>Pharetra massa</li>
+                                <li>Massa ultricies mi</li>
+                            </ul>
+                            <div class="btn-wrap">
+                                <a href="#" class="btn-buy">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+                        <div class="box" data-aos="fade-up">
+                            <h3>Ultimate</h3>
+                            <h4><sup>$</sup>49<span> / month</span></h4>
+                            <ul>
+                                <li>Aida dere</li>
+                                <li>Nec feugiat nisl</li>
+                                <li>Nulla at volutpat dola</li>
+                                <li>Pharetra massa</li>
+                                <li>Massa ultricies mi</li>
+                            </ul>
+                            <div class="btn-wrap">
+                                <a href="#" class="btn-buy">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Pricing Section -->
+
+    {% endblock %}
+
+    <!-- ======= Contact Section ======= -->
+    {% block contact %}
+        <section id="contact" class="contact">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Contact</h2>
+                    <p>Avez vous besoin d'aide ? <span> Contactez-Nous</span></p>
+                </div>
+
+            </div>
+
+            <div class="container">
+
+                <div class="row mt-5">
+
+                    <div class="col-lg-6">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="info-box">
+                                    <i class="bx bx-map"></i>
+                                    <h3>Notre Adresse</h3>
+                                    <p>Avenue Fattouma Bourguiba , La Soukra</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-box mt-4">
+                                    <i class="bx bx-envelope"></i>
+                                    <h3>E-mail</h3>
+                                    <p>info@agroeasy.com<br>contact@agroeasy.com</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-box mt-4">
+                                    <i class="bx bx-phone-call"></i>
+                                    <h3>Téléphone</h3>
+                                    <p>+216 57 458 544<br>+216 56 458 544</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-6">
+                        <form action="{{ asset('front/forms/contact.php') }}" method="post" role="form" class="php-email-form">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Nom"
+                                           required="">
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <input type="email" class="form-control" name="email" id="email"
+                                           placeholder="E-mail" required="">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet"
+                                       required="">
+                            </div>
+                            <div class="form-group mt-3">
+                                <textarea class="form-control" name="message" rows="7" placeholder="Message"
+                                          required=""></textarea>
+                            </div>
+                            <div class="my-3">
+                                <div class="loading">Loading</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">Votre message a été envoyer avec succés. Merci!</div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit">Envoyez votre Message</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Contact Section -->
+    {% endblock %}
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+{% block footer %}
+    <footer id="footer" class="footer">
+
+        <div class="container">
+            <div class="row gy-3">
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <i class="bi bi-geo-alt icon"></i>
+                    <div>
+                        <h4>Notre adresse</h4>
+                        <p>
+                            Avenue Fattouma Bourguiba ,<br>
+                            La Soukra<br>
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links d-flex">
+                    <i class="bi bi-telephone icon"></i>
+                    <div>
+                        <h4>Info</h4>
+                        <p>
+                            <strong>téléphone:</strong> +216 57 458 544 - +216 56 458 544<br>
+                            <strong>Email:</strong> info@argoeasy.com<br>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links d-flex">
+                    <i class="bi bi-clock icon"></i>
+                    <div>
+                        <h4>Horaire</h4>
+                        <p>
+                            <strong>Lun-Dim: 06AM</strong> - 18PM<br>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Abonnez vous</h4>
+                    <div class="social-links d-flex">
+                        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>ArgoEasy</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/ -->
+                Designed by <a href="#">DevArmy</a>
+            </div>
+        </div>
+
+    </footer><!-- End Footer -->
+{% endblock %}
+
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+{% block js %}
+    <!-- Vendor JS Files -->
+    <script src="{{ asset('front/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+    <script src="{{ asset('front/assets/vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('front/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('front/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('front/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('front/assets/vendor/php-email-form/validate.js') }}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{{ asset("front/assets/js/main.js") }}"></script>
+{% endblock %}
+</body>
+
+</html>

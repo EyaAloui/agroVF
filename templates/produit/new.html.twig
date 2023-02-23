@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Produit{% endblock %}
+
+    {% block body %}
+<div class="my-2" style="
+        display: flex;
+        flex-direction: column;
+      align-items: center;
+      min-height: 100%;">
+    <h1 style="font-family: 'Microsoft Tai Le'; color: #333; text-align: center;">Création d'un produit</h1>
+
+        {{ include('produit/_form.html.twig') }}
+        <a href="{{ path('app_produit_index') }}" class="btn btn-secondary" style="margin-top: 10px;">Retour</a>
+</div>
+    {% endblock %}
+

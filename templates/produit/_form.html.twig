@@ -1,0 +1,58 @@
+{# {% form_theme form 'bootstrap_4_layout.html.twig' %} #}
+<div class="card align-items-center" style="font-family: 'Microsoft Tai Le'; width: 620px; height: auto;">
+    <div class="card-body" >
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        <div class="form-group row " style="margin-top: 20px">
+            {{ form_label(form.nom, null, {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                <div style="color: #ff253a; font-family: Cambria">
+                    {{ form_errors(form.nom) }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group row" style="margin-top: 10px">
+            {{ form_label(form.prix, null, {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+                <div style="color: #ff253a; font-family: Cambria">
+                    {{ form_errors(form.prix) }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group row" style="margin-top: 10px;word-wrap: break-word;">
+            {{ form_label(form.description, 'Description', {'label_attr': {'class': 'col-sm-2 col-form-label' }}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                <div style="color: #ff253a; font-family: Cambria">
+                    {{ form_errors(form.description) }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group row" style="margin-top: 10px">
+            {{ form_label(form.status, 'Statut', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.status, {'attr': {'class': 'form-check-input'}, 'choice_widget_expanded': true}) }}
+                {{ form_errors(form.status) }}
+            </div>
+        </div>
+        <div class="form-group row" style="margin-top: 10px">
+            {{ form_label(form.categorie, null, {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.categorie, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.categorie) }}
+
+            </div>
+        </div>
+        <div class="form-group row" style="margin-top: 10px">
+            {{ form_label(form.image, null, {'label_attr': {'class': 'col-sm-5 col-form-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.image, {'attr': {'class': 'form-control','style': 'max-width:auto'}}) }}
+                {{ form_errors(form.image)}}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success" style="margin-top: 50px ;margin-left: 213px;">Enregistrer</button>
+        {{ form_end(form) }}
+    </div>
+</div>
+

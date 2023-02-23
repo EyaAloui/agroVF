@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    <h3>Produit</h3>
+{% endblock %}
+
+{% block body %}
+{#    <main id="main" class="main" style="#}
+{#      display: flex;#}
+{#      flex-direction: column;#}
+{#      align-items: center;#}
+{#      min-height: 100%;">#}
+  <!-- End #main -->
+    <h1 style="font-family:'Microsoft Tai Le'">Produit</h1>
+    <form action="{{ path('app_produit_search') }}" method="get" class="form-inline mb-2">
+        <div class="input-group">
+            <input type="text" class="form-control" name="q" placeholder="Search..." aria-label="Search for products">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-secondary">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <table class="table table-hover" style="font-family:'Microsoft Tai Le'">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+            <th scope="col">Categorie</th>
+            <th scope="col">Image</th>
+            <th scope="col">Actions</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <th scope="row">{{ produit.id }}</th>
+                <td class="font-weight-bold">{{ produit.nom }}</td>
+                <td class="font-italic">{{ produit.prix }}</td>
+                <td>{{ produit.description }}</td>
+                <td>{{ produit.status ? 'Yes' : 'No' }}</td>
+                <td>{{ produit.categorie }}</td>
+                <td>{{ produit.image }}</td>
+
+                <td style="text-align: justify-all">
+                    <div style="display: flex;">
+                    <a href="{{ path('app_produit_show', {'id': produit.id}) }}" class="btn btn-outline-success btn-sm mr-2" style="text-align: right">consulter</a>
+                    <a href="{{ path('app_produit_edit', {'id': produit.id}) }}" class="btn btn-outline-secondary btn-sm mr-2">Modifier</a>
+                    <form method="post" action="{{ path('app_produit_delete', {'id': produit.id}) }}" class="d-inline" onsubmit="return confirm('Êtes-vous sûr de bien vouloir supprimer cet élément?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ produit.id) }}">
+                        <button type="submit" class="btn btn-outline-danger btn-sm">Supprimer</button>
+                    </form>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_produit_new') }}" class="btn btn-success">Ajouter </a>
+{#    </main>#}
+{% endblock %}

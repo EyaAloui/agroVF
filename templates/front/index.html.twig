@@ -1,0 +1,25 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block swiper %}
+    <div class="gallery-slider swiper" style="display: block; margin-left: auto; margin-right: auto; ">
+        <div class="swiper-wrapper align-items-center">
+            {% for produit in produits %}
+                <div class="swiper-slide" style="background-color: #f8f9fa; border-radius: 10px; padding: 20px;">
+                    <a class="gallery-lightbox" href="{{ asset('images/produits/' ~ produit.image) }}">
+                        <img src="{{ asset('images/produits/' ~ produit.image) }}" class="img-fluid" alt="{{ produit.nom }}">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-family: 'Microsoft Tai Le';font-weight: bold" >Nom : {{ produit.nom }}</h5>
+                        <p class="card-text" style="font-family: 'Microsoft Tai Le';"> Description : {{ produit.description }}</p>
+                        <p class="card-text" style="font-family: 'Microsoft Tai Le';font-weight: bold"> Prix : {{ produit.prix }} Franc</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <div class="swiper-pagination"></div>
+    </div>
+{% endblock %}

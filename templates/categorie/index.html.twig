@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorie{% endblock %}
+
+{% block body %}
+    <h1 style="font-family:'Microsoft Tai Le'">Categorie</h1>
+
+    <form action="{{ path('app_categorie_search') }}" method="get" class="form-inline mb-2">
+        <div class="input-group">
+            <input type="text" class="form-control" name="q" placeholder="Search..." aria-label="Search for categories">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-secondary">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <table class="table table-hover" style="font-family:'Microsoft Tai Le'">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Label</th>
+            <th scope="col" style="text-align: right;margin-left: 20px">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td scope="row">{{ categorie.id }}</td>
+                <td class="font-weight-bold">{{ categorie.label }}</td>
+                <td style="text-align: right">
+                    <a href="{{ path('app_categorie_show', {'id': categorie.id}) }}" class="btn btn-outline-success btn-sm mr-2">Consulter</a>
+                    <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}" class="btn btn-outline-secondary btn-sm">Modifier</a>
+                    <form method="post" action="{{ path('app_categorie_delete', {'id': categorie.id}) }}"  class="d-inline" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ categorie.id) }}">
+                        <button type="submit" class="btn btn-outline-danger btn-sm">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_categorie_new') }}" class="btn btn-success">Ajouter </a>
+{% endblock %}
