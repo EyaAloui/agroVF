@@ -2,8 +2,17 @@
 
 namespace App\Controller;
 
+use App\Entity\Utilisateur;
 use App\Repository\CategorieRepository;
+use App\Repository\CultureRepository;
+use App\Repository\EmployeRepository;
+use App\Repository\EquipementRepository;
+use App\Repository\EvenementRepository;
+use App\Repository\FactureRepository;
+use App\Repository\ParticipationRepository;
 use App\Repository\ProduitRepository;
+use App\Repository\TerrainRepository;
+use App\Repository\UtilisateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,10 +27,10 @@ class DashboardController extends AbstractController
         ]);
     }
     #[Route('/client', name: 'app_dashboardClient')]
-    public function client(): Response
+    public function utilisateur(UtilisateurRepository $utilisateurRepository): Response
     {
-        return $this->render('dashboard/page-clients.html.twig', [
-            'controller_name' => 'DashboardController',
+        return $this->render('utilisateur/index.html.twig', [
+            'utilisateurs' => $utilisateurRepository->findAll(),
         ]);
     }
     #[Route('/user', name: 'app_dashboardUser')]
@@ -31,47 +40,57 @@ class DashboardController extends AbstractController
             'controller_name' => 'DashboardController',
         ]);
     }
+    #[Route('/facture', name: 'app_dashboardFacture')]
+    public function facture(FactureRepository $factureRepository): Response
+    {
+        return $this->render('facture/index.html.twig', [
+            'factures' => $factureRepository->findAll(),
+        ]);
+    }
 
     #[Route('/comptabilite', name: 'app_dashboardComptabilite')]
-    public function comptabilite(): Response
+    public function comptabilite(CultureRepository $cultureRepository): Response
     {
-        return $this->render('dashboard/page-comptabilite.html.twig', [
-            'controller_name' => 'DashboardController',
+        return $this->render('comptabilite/index.html.twig', [
+            'comptabilites' => $cultureRepository->findAll(),
         ]);
     }
+
     #[Route('/culture', name: 'app_dashboardCulture')]
-    public function culture(): Response
+    public function culture(CultureRepository $cultureRepository): Response
     {
-        return $this->render('dashboard/page-culture.html.twig', [
-            'controller_name' => 'DashboardController',
+        return $this->render('culture/index.html.twig', [
+            'cultures' => $cultureRepository->findAll(),
         ]);
     }
+
+    #[Route(path: '/logout', name: 'app_logout')]
+    public function logout(): void
+    {
+        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+
+
     #[Route('/employe', name: 'app_dashboardEmploye')]
-    public function employe(): Response
+    public function employe(EmployeRepository $employeRepository): Response
     {
-        return $this->render('dashboard/page-employe.html.twig', [
-            'controller_name' => 'DashboardController',
+        return $this->render('employe/index.html.twig', [
+            'employes' => $employeRepository->findAll(),
         ]);
     }
+
     #[Route('/evenement', name: 'app_dashboardEvenement')]
-    public function evenement(): Response
+    public function evenement(EvenementRepository $repository): Response
     {
-        return $this->render('dashboard/page-event.html.twig', [
-            'controller_name' => 'DashboardController',
-        ]);
-    }
-    #[Route('/facture', name: 'app_dashboardFacture')]
-    public function facture(): Response
-    {
-        return $this->render('dashboard/page-facture.html.twig', [
-            'controller_name' => 'DashboardController',
+        return $this->render('evenement/index.html.twig', [
+            'evenements' =>$repository->findAll()
         ]);
     }
     #[Route('/participant', name: 'app_dashboardParticipant')]
-    public function participant(): Response
+    public function participant(ParticipationRepository $repository): Response
     {
-        return $this->render('dashboard/page-participant.html.twig', [
-            'controller_name' => 'DashboardController',
+        return $this->render('participation/index.html.twig', [
+            'participations' =>$repository->findAll()
         ]);
     }
     #[Route('/produit', name: 'app_dasshboardProduit')]
@@ -81,25 +100,29 @@ class DashboardController extends AbstractController
             'produits' => $produitRepository->findAll(),
         ]);
     }
-    #[Route('/categorie', name: 'app_dashboardCqtegorie')]
+
+    #[Route('/categorie', name: 'app_dashboardCategorie')]
     public function categorie(CategorieRepository $categorieRepository): Response
     {
         return $this->render('categorie/index.html.twig', [
             'categories' => $categorieRepository->findAll(),
         ]);
     }
-    #[Route('/terrain', name: 'app_dashboardTerrain')]
-    public function terrain(): Response
-    {
-        return $this->render('dashboard/page-terrain.html.twig', [
-            'controller_name' => 'DashboardController',
-        ]);
-    }
+
     #[Route('/equipement', name: 'app_dashboardEquipement')]
-    public function vehicule(): Response
+    public function equipement(EquipementRepository $repository ): Response
     {
-        return $this->render('dashboard/page-equipement.html.twig', [
-            'controller_name' => 'DashboardController',
+        return $this->render('equipement/index.html.twig', [
+            'equipements' => $repository->findAll(),
         ]);
     }
+    #[Route('/terrain', name: 'app_dashboardTerrain')]
+    public function terrain( TerrainRepository $terrainRepository): Response
+    {
+        return $this->render('terrain/index.html.twig', [
+            'terrains' => $terrainRepository->findAll(),
+        ]);
+    }
+
+
 }

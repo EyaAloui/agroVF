@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
 #[UniqueEntity(fields: ['label'], message: 'Cette étiquette est déjà utilisée.')]
@@ -16,10 +17,12 @@ class Categorie
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['categories'])]
     private ?int $id = null;
 
     #[Assert\NotNull(message:"L'etiquette ne peut pas être vide"),Type('string')]
     #[ORM\Column(length: 255)]
+    #[Groups(['categories'])]
     private ?string $label = null;
 
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Produit::class)]

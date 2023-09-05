@@ -2,32 +2,60 @@
 
 namespace App\Entity;
 
-use App\Repository\VehiculeRepository;
+use App\Repository\EquipementRepository;
 use Doctrine\ORM\Mapping as ORM;
-
-#[ORM\Entity(repositoryClass: VehiculeRepository::class)]
+use Symfony\Component\Validator\Constraints as Assert;
+#[ORM\Entity(repositoryClass: EquipementRepository::class)]
 class Equipement
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
+    #[Assert\NotBlank(message:"le champ type est obligatoire")]
+    #[Assert\Length(
+        min: 4,
+        max: 10,
+        minMessage: 'donner un type au moins de {{ limit }} caractères ',
+        maxMessage: 'donner un type maximum de {{ limit }} caractères',)]
+        #[Assert\Type(
+            type: 'string',
+            message: 'le type {{ value }} n est pas valide {{ type }}.',)]
     #[ORM\Column(length: 255)]
     private ?string $type = null;
-
+    #[Assert\NotBlank(message:"le champ disponnible est obligatoire")]
+    #[Assert\Length(
+        min: 4,
+        max: 10,
+        minMessage: 'donner une marque au moins de {{ limit }} caractères ',
+        maxMessage: 'donner une marque maximum de {{ limit }} caractères',)]
+        #[Assert\Type(
+            type: 'string',
+            message: 'la marque {{ value }} n est pas valide {{ type }}.',)]
     #[ORM\Column(length: 255)]
     private ?string $marque = null;
-
+    #[Assert\NotBlank(message:"le champ disponnible est obligatoire")]
+    #[Assert\Type(
+        type: 'bool',
+        message: '{{ value }} n est pas valide {{ type }}.',)]
     #[ORM\Column]
     private ?bool $disponnible = null;
-
+    #[Assert\NotBlank(message:"le champ etat est obligatoire")]
+    #[Assert\Type(
+        type: 'string',
+        message: 'l etat {{ value }} n est pas valide {{ type }}.',)]
     #[ORM\Column(length: 255)]
     private ?string $etat = null;
-
+    #[Assert\NotBlank(message:"le champ matricule est obligatoire")]
+    #[Assert\Length(
+        min: 10,
+        max: 10,
+        minMessage: 'donner une matricule au moins de {{ limit }} caractères ',
+        maxMessage: 'donner une matricule maximum de {{ limit }} caractères',)]
     #[ORM\Column(length: 255)]
     private ?string $matricule = null;
-
+    #[Assert\NotBlank(message:"le champ matricule est obligatoire")]
+    
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Employe $employe = null;
 
@@ -48,14 +76,14 @@ class Equipement
         return $this;
     }
 
-    public function getModele(): ?string
+    public function getMarque(): ?string
     {
-        return $this->modele;
+        return $this->marque;
     }
 
-    public function setModele(string $modele): self
+    public function setMarque(string $marque): self
     {
-        $this->modele = $modele;
+        $this->marque = $marque;
 
         return $this;
     }

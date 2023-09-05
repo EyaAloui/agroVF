@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Equipement{% endblock %}
+
+{% block body %}
+   <main style="
+           display: flex;align-items: center;
+            left: 200px;
+            bottom: 180px;
+            width: 90%;
+          justify-content: center;
+            flex-wrap: wrap;
+            height: 250px;
+            text-align: center;">
+            
+    <div class="row">
+     <br>
+                    <div class="card">
+                <div class="card-body">
+               
+                    <h4 class="card-title">Ajouter Equipement </h4>
+                       {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+                
+
+                   {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+                        <label for="inputText" class="col-sm-4 col-form-label">marque</label>
+                        <div class="col-sm-12">
+                            {{ form_widget(form.marque,{'attr':{'class':'form-control'}}) }}
+
+                        </div>
+                    {{ form_errors(form.marque,{'attr':{'class':'text-danger'}}) }}
+
+
+                   {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+                        <label for="inputText" class="col-sm-5 col-form-label">disponibilité</label>
+                        <div class="col-sm-12">
+                            {{ form_widget(form.disponnible,{'attr':{'class':'form-control'}}) }}
+
+                        </div>
+                    {{ form_errors(form.disponnible,{'attr':{'class':'text-danger'}}) }}
+
+
+                   {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+                        <label for="inputText" class="col-sm-4 col-form-label">état</label>
+                        <div class="col-sm-12">
+                            {{ form_widget(form.etat,{'attr':{'class':'form-control'}}) }}
+
+                        </div>
+                    {{ form_errors(form.etat,{'attr':{'class':'text-danger'}}) }}
+
+ {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+                        <label for="inputText" class="col-sm-4 col-form-label">employé</label>
+                        <div class="col-sm-12">
+                            {{ form_widget(form.employe,{'attr':{'class':'form-control'}}) }}
+
+                        </div>
+                    {{ form_errors(form.employe,{'attr':{'class':'text-danger'}}) }}
+                     {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+                        <label for="inputText" class="col-sm-4 col-form-label">matricule</label>
+                        <div class="col-sm-12">
+                            {{ form_widget(form.matricule,{'attr':{'class':'form-control'}}) }}
+
+                        </div>
+                    {{ form_errors(form.matricule,{'attr':{'class':'text-danger'}}) }}
+                    {{ form_end(form) }}
+
+               
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+{% endblock %}

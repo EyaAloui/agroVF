@@ -37,12 +37,16 @@
                 <td>{{ produit.categorie }}</td>
             </tr>
             <tr>
+                <th>QR</th>
+                <td> <img src="{{ qrcode }}" alt="Qr code"></td>
+            </tr>
+            <tr>
                 <th>Image</th>
-                <td>{{ produit.image }}</td>
+                     <td><img src="\images\produits\{{ produit.image }}" width="150px">
+                </td>
             </tr>
         </tbody>
     </table>
-            <img src="{{ asset('public/images/produits/' ~ produit.image) }}" alt="{{ produit.nom }}" style="width: auto; height: auto;">
         </div>
     </div>
 
@@ -56,4 +60,6 @@
         {{ include('produit/_delete_form.html.twig') }}
         <a href="{{ path('app_produit_index') }}" class="btn btn-secondary" style="margin-top: 10px">Retour</a>
     </div>
+
+
 {% endblock %}

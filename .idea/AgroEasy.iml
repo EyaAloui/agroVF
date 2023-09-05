@@ -43,12 +43,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/dbal" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/cache" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/collections" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/friendsofphp/proxy-manager-lts" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/maker-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/doctrine-bridge" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/stopwatch" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-code" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/sql-formatter" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/orm" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/persistence" />
@@ -138,8 +136,33 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/monolog-bridge" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/asset" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/dompdf/dompdf" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phenx/php-svg-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phenx/php-font-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/sabberworm/php-css-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/masterminds/html5" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-snappy" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bacon/bacon-qr-code" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/dasprid/enum" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/endroid/qr-code" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/endroid/installer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/endroid/qrcode" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/endroid/qr-code-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-paginator-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/knplabs/knp-components" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfonycasts/reset-password-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfonycasts/verify-email-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mercuryseries/flashy-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/google-mailer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/vich/uploader-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/jms/metadata" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jquery-3.6.0" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="jquery-3.3.1.slim" level="application" />
+    <orderEntry type="library" name="@popperjs/core" level="application" />
+    <orderEntry type="library" name="echarts" level="application" />
   </component>
 </module>

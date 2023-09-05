@@ -3,6 +3,7 @@
 {% block title %}Modifier produit{% endblock %}
 
 {% block body %}
+    <h1><title>Produit mod</title></h1>
     <h1 style="font-family:'Microsoft Tai Le'">Modifier le produit d'id = {{ produit.id }}</h1>
 
     {{ include('produit/_form.html.twig', {'button_label': 'Update'}) }}

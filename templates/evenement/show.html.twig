@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evenement{% endblock %}
+
+{% block body %}
+
+
+    <style>
+h1{
+color:#09471B;
+}
+table {
+  border:3px solid #4CAF50;
+}
+th{
+border:1px solid black;
+color:#366D46 ;
+}
+
+td{
+border:1px solid black;
+}
+
+.button {
+  border: none;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: white; 
+  border: 2px solid #4CAF50;
+}
+
+.button:hover {
+  background-color: #8DC6AE;
+  color: white;
+}
+
+</style>
+
+
+  <h1>Evenement</h1>
+<table class="table" >
+    
+
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ evenement.id }}</td>
+            </tr>
+            <tr>
+               <th>Titre</th>
+                <td>{{ evenement.titre }}</td>
+            </tr>
+           
+             <tr>
+                  <th>Lieu</th>
+                <td>{{ evenement.Lieu }}</td>
+            </tr>
+             <tr>
+               <th>Date</th>
+                <td>{{ evenement.date ? evenement.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <th>Image</th>
+                <td><img src="\uploads\my_events\{{ evenement.image }}" width="80px"></td>
+            </tr>
+            <th>UpdatedAt</th>
+                <td>{{ evenement.updatedAt ? evenement.updatedAt|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+<div class='button'>
+     <a href="{{ path('app_evenement_index') }}">Retour à la liste</a>
+</div>
+<div class='button'>
+    <a href="{{ path('app_evenement_edit', {'id': evenement.id}) }}">Editer</a>
+</div>
+<div class='button'>
+{{ include('evenement/_delete_form.html.twig') }}
+</div>
+{% endblock %}

@@ -38,7 +38,16 @@ class EmployeRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-
+    
+    public function findEmployesWithoutEquipement(): array
+    {
+        return $this->createQueryBuilder('e')
+            ->leftJoin('e.equipement', 'eq')
+            ->where('eq.id IS NULL')
+            ->getQuery()
+            ->getResult();
+    }
+    
 //    /**
 //     * @return Employe[] Returns an array of Employe objects
 //     */

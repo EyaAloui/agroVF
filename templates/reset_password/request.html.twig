@@ -1,0 +1,87 @@
+
+
+<main style="
+            position: fixed;
+            left: 300px;
+            bottom: 300px;
+            width: 50%;
+            text-align: center;">
+
+
+{% block contenu %}
+    {% for flash_error in app.flashes('reset_password_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+    <h1>Récupérez votre mot de passe</h1>
+
+    {{ form_start(requestForm) }}
+        {{ form_row(requestForm.email) }}
+        <br>
+        <br>
+        
+        <div>
+            <small>
+                Entrez votre adresse email  et vous recevrez un lien pour récupérez votre mot de passe.
+            </small>
+        </div>
+<br>
+
+        <button class="btn btn-lg btn-primary" style="background-color:green ; border-color:green ; color:white">Envoyer </button>
+    {{ form_end(requestForm) }}
+{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <title>Register</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+
+        <link href="front/assets/img/logo.png" rel="icon">
+        <link href="front/assets/img/logo.png" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    {% endblock %}
+    {% block Css %}
+        <!-- Vendor CSS Files -->
+        <link href="front/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <link href="front/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+        <link href="front/assets/vendor/aos/aos.css" rel="stylesheet">
+        <link href="front/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="front/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="front/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="front/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="front/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="front/assets/css/style.css" rel="stylesheet">
+    {% endblock %}
+
+</head>
+
+<body>
+{% block body %}
+    <!-- ======= Top Bar ======= -->
+    <div id="topbar" class="d-flex align-items-center fixed-top">
+        <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+            <div class="align-items-center d-none d-md-flex">
+                <i class="bi bi-clock"></i> Lundi - Dimanche, 6AM to 6PM
+            </div>
+            <div class="d-flex align-items-center">
+                <i class="bi bi-phone"></i> Contactez-nous +216 57 458 544
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+<!-- ======= Header ======= -->
+
+
+
+
+</html>

@@ -36,8 +36,37 @@ class CultureRepository extends ServiceEntityRepository
 
         if ($flush) {
             $this->getEntityManager()->flush();
-        }
+        }}
+    public function searchCulture($objet) {
+        return $this->createQueryBuilder('culture')
+            ->andWhere('culture.objet LIKE :objet')
+            ->setParameter('objet', '%'.$objet.'%')
+            ->getQuery()
+            ->execute();
     }
+
+    public function getPaginatedAnnonces($page, $limit){
+        $query = $this->createQueryBuilder('a')
+            ->where('a.active = 1')
+            ->orderBy('a.created_at')
+            ->setFirstResult(($page * $limit) - $limit)
+            ->setMaxResults($limit)
+        ;
+        return $query->getQuery()->getResult();
+    }
+
+
+    public function chartRepository()
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->select('c.type as culture, COUNT(c.id) as quantite')
+            ->groupBy('c.type')
+            ->getQuery();
+
+        return $qb->execute();
+    }
+
+}
 
 //    /**
 //     * @return Culture[] Returns an array of Culture objects
@@ -63,4 +92,3 @@ class CultureRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
-}

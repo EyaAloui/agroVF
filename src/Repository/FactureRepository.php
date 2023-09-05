@@ -63,4 +63,22 @@ class FactureRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function findAchat()
+    {
+        return $this->createQueryBuilder('i')
+            ->where('i.type = :type')
+            ->setParameter('type', 'achat')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findVente()
+    {
+        return $this->createQueryBuilder('i')
+            ->where('i.type = :type')
+            ->setParameter('type', 'vente')
+            ->getQuery()
+            ->getResult();
+    }
 }

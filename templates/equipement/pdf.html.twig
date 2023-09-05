@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Equipements PDF</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            th, td {
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            th {
+                background-color: #4CAF50;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Equipements</h1>
+        <table>
+            <thead>
+                 <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Marque</th>
+                <th>Disponnible</th>
+                <th>Etat</th>
+                <th>Matricule</th>
+                <th>employé</th>
+                
+            </tr>
+            </thead>
+            <tbody>
+                {% for equipement in equipements %}
+                    <tr>
+                <td>{{ equipement.id }}</td>
+                <td>{{ equipement.type }}</td>
+                <td>{{ equipement.marque }}</td>
+                <td>{{ equipement.disponnible ? 'Yes' : 'No' }}</td>
+                <td>{{ equipement.etat }}</td>
+                <td>{{ equipement.matricule }}</td>
+                <td>{{ equipement.employe }}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>

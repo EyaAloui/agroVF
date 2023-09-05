@@ -1,0 +1,53 @@
+{#<h1 class="facture">{{ facture.label }}</h1>#}
+
+<table style="border-collapse: collapse; width: 100%;">
+    <thead style="background-color: #343a40; color: #fff; font-weight: bold;">
+    <tr>
+        <td style="padding: 10px;">Date</td>
+        <td style="padding: 10px;">Type</td>
+        <td style="padding: 10px;">Montant total</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for facture in factures %}
+        <tr style="background-color: #f8f9fa;">
+         <td style="padding: 10px; font-weight: bold; color: #0b5ed7;">{{ facture.dateFacture ? facture.dateFacture|date('Y-m-d') }}</td>
+                <td style="padding: 10px;">{{ facture.type }}</td>
+                <td style="padding: 10px;">{{ facture.montantTotale }}</td>
+            
+        </tr>
+            
+    {% endfor %}
+    </tbody>
+</table>
+<style>
+    body {
+        border: 2px solid black;
+        padding: 20px;
+    }
+
+    .Categorie{
+        text-align: center;
+        color:#0a53be ;
+    }
+
+    .product {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .product h2 {
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+
+    .product p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .product p:last-child {
+        font-weight: bold;
+    }
+</style>

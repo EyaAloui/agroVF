@@ -71,7 +71,7 @@
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
 
-            <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline"></span>Se connecter</a>
+            <a href="{{asset('/login')}}" class="appointment-btn scrollto"><span class="d-none d-md-inline"></span>Se connecter</a>
 
         </div>
     </header><!-- End Header -->
@@ -327,35 +327,14 @@
         <br>
         <br>
         <section id="gallery" class="gallery">
+            <div class="section-title">
+                <h2>Nos produits</h2>
+            </div>
             <div class="container" data-aos="fade-up">
                 {% block swiper %}
-                <div class="section-title">
-                    <h2>Nos produits</h2>
-                </div>
-                <div class="gallery-slider swiper">
-                    <div class="swiper-wrapper align-items-center">
-                        <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('front/assets/img/1.jpg') }}"><img
-                                        src="{{asset("front/assets/img/1.jpg") }}" class="img-fluid" alt=""></a></div>
-                        <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('front/assets/img/3.jpg') }}"><img
-                                        src="{{asset("front/assets/img/3.jpg") }}" class="img-fluid" alt=""></a></div>
-                        <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('front/assets/img/5.jpg') }}"><img
-                                        src="{{asset("front/assets/img/5.jpg") }}" class="img-fluid" alt=""></a></div>
-                        <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('front/assets/img/6.jpg') }}"><img
-                                        src="{{asset("front/assets/img/6.jpg") }}" class="img-fluid" alt=""></a></div>
-                        <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('front/assets/img/7.jpg') }}"><img
-                                        src="{{asset("front/assets/img/7.jpg") }}" class="img-fluid" alt=""></a></div>
-                        <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('front/assets/img/8.jpg') }}"><img
-                                        src="{{asset("front/assets/img/8.jpg") }}" class="img-fluid" alt=""></a></div>
-                        <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('front/assets/img/9.jpg') }}"><img
-                                        src={{asset("front/assets/img/9.jpg") }} class="img-fluid" alt=""></a></div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                    <a href="{{ asset('produits') }}">
-                        <button type="button" class="btn btn btn-outline-success"
-                                style="display: block;margin-left: auto;margin-right: auto;">Consult produits
-                        </button>
-                    </a>
-                </div>
+
+                    Liste des produit
+
                 {% endblock %}
             </div>
         </section>

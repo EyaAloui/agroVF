@@ -38,6 +38,15 @@
             "./migrations/.gitignore"
         ]
     },
+    "endroid/qr-code-bundle": {
+        "version": "4.3.1"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.4.0"
+    },
+    "mercuryseries/flashy-bundle": {
+        "version": "v5.1.0"
+    },
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {
@@ -118,6 +127,15 @@
             "./src/Controller/.gitignore",
             "./src/Kernel.php"
         ]
+    },
+    "symfony/google-mailer": {
+        "version": "5.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "4.4",
+            "ref": "f8fd4ddb9b477510f8f4bce2b9c054ab428c0120"
+        }
     },
     "symfony/mailer": {
         "version": "5.4",
@@ -279,7 +297,31 @@
             "./config/packages/messenger.yaml"
         ]
     },
+    "symfonycasts/reset-password-bundle": {
+        "version": "1.17",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "97c1627c0384534997ae1047b93be517ca16de43"
+        },
+        "files": [
+            "./config/packages/reset_password.yaml"
+        ]
+    },
+    "symfonycasts/verify-email-bundle": {
+        "version": "v1.13.0"
+    },
     "twig/extra-bundle": {
         "version": "v3.5.1"
+    },
+    "vich/uploader-bundle": {
+        "version": "2.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.13",
+            "ref": "1b3064c2f6b255c2bc2f56461aaeb76b11e07e36"
+        }
     }
 }

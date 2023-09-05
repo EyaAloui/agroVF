@@ -1,0 +1,10 @@
+vich_uploader:
+  db_driver: orm
+
+  mappings:
+    my_events_uploads:
+      uri_prefix: 'uploads/my_events'
+      upload_destination: '%kernel.project_dir%/public/uploads/my_events'
+      namer: 'Vich\UploaderBundle\Naming\UniqidNamer'
+      delete_on_remove: true
+      delete_on_update: true

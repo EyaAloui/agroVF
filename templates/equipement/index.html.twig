@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Equipements index {% endblock %}
+
+{% block body %}
+    <h1>Liste des equipements</h1>
+{% for e in equipements %}
+    {% if e.totalItemCount > 0 %}
+    <table class="table">
+    
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Marque</th>
+                <th>Disponnible</th>
+                <th>Etat</th>
+                <th>Matricule</th>
+                <th>employé</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>{{ e.id }}</td>
+                <td>{{ e.type }}</td>
+                <td>{{ e.marque }}</td>
+                <td>{{ e.disponnible ? 'Yes' : 'No' }}</td>
+                <td>{{ e.etat }}</td>
+                <td>{{ e.matricule }}</td>
+                <td>{{ e.employe }}</td>
+                <td>
+                    <a class="btn btn-outline-primary" href="{{ path('app_equipement_show', {'id': e.id}) }}">afficher</a>
+                    <a class="btn btn-outline-primary" href="{{ path('app_equipement_edit', {'id': e.id}) }}">modifier</a>
+                    <a class="btn btn-outline-primary" href="{{ path('app_equipement_delete', {'id': e.id}) }}">supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+
+        </tbody>
+    </table>
+{{ knp_pagination_render(equipement) }}
+
+    {% endif %}
+{% endfor %}
+{#{{ render_chart(chart) }}#}
+
+{# You can pass HTML attributes as a second argument to add them on the <canvas> tag #}
+
+    <a class="btn btn-outline-success" href="{{ path('app_equipement_stats') }}">stat</a>
+
+    <a class="btn btn-outline-success" href="{{ path('app_equipement_new') }}">ajouter equipement</a>
+{% endblock %}
+

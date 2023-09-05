@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Facture index{% endblock %}
+
+{% block body %}
+<main style="
+            text-align: center;">   
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-20">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><strong>Liste des factures</strong></h5>
+
+            {# <h1>Table Des factures</h1> #}
+             <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Montant total</th>
+                <th>Valeur</th>
+                <th>Actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        
+
+   {% if app.flashes('error') is not empty %}
+   
+    <div class="alert alert-info">
+        Pas de facture à imprimer.
+    </div>
+{% else %}
+
+
+
+        {% for facture in factures %}
+            <tr>
+                <td>{{ facture.id }}</td>
+                <td>{{ facture.dateFacture ? facture.dateFacture|date('Y-m-d') : '' }}</td>
+                <td>{{ facture.type }}</td>
+                <td>{{ facture.montantTotale }}</td>
+                {# <td>{{ facture.valeur }}</td> #}
+                <td>
+                          
+                    <a class="btn btn-outline-info" href="{{ path('app_facture_show', {'id': facture.id}) }}"> afficher</a>
+                    <a class="btn btn-outline-success" href="{{path ('app_facture_edit',{'id': facture.id }) }}"> modifier</a>
+                    <a class="btn btn-outline-danger" href="{{path ('app_facture_delete',{'id': facture.id }) }}"> supprimer</a>
+                    
+                </td>
+            </tr>
+     
+        
+            
+        {% endfor %}
+        {% endif %}
+      
+        </tbody>
+    </table>
+
+    <a class="btn btn-outline-success" href="{{ path('app_facture_new') }}">Creer</a>
+    <a class="btn btn-outline-success"  href="{{ path('app_facture_pdf') }}">Imprimer</a>
+
+
+    </main>
+{% endblock %}

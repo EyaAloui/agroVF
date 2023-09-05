@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Culture index{% endblock %}
+
+{% block body %}
+    <main style="text-align: center;">
+        <div class="container">
+            <h1>Culture index</h1>
+            <div class="card">
+                <div class="card-header">
+                    <a class="btn btn-outline-primary" href="{{ path('app_culture_new') }}">
+                        une nouvelle culture
+                    </a>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Type</th>
+                            <th>Date plantation</th>
+                            <th>Quantité</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for c in culture %}
+                            <tr>
+                                <td>{{ c.id }}</td>
+                                <td>{{ c.type }}</td>
+                                <td>{{ c.datePlanting ? c.datePlanting|date('Y-m-d') : '' }}</td>
+                                <td>{{ c.quantite }}</td>
+                                <td>
+                                    <a class="btn btn-outline-info" href="{{ path('app_culture_show', {'id': c.id}) }}">Afficher</a>
+                                    <a class="btn btn-outline-success" href="{{ path('app_culture_edit', {'id': c.id}) }}">Modifier</a>
+                                    <a class="btn btn-outline-danger" href="{{ path('app_culture_delete', {'id': c.id}) }}">Supprimer</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5">No records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <a class="btn btn-outline-success" href="{{ path('app_culture_stats') }}">Stats</a>
+                    {{ knp_pagination_render(culture) }}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

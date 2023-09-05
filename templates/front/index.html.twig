@@ -1,10 +1,33 @@
 {% extends 'baseFront.html.twig' %}
 
 {% block swiper %}
+    <div class="category-filter" style="text-align: center" >
+        <form action="{{ path('app_frontProduitSelected') }}" method="GET">
+            <div class="form-group row align-items-center">
+                <div class="col-sm-7">
+                    <select id="category-select" name="categorie" class="form-control" style="width: 210px;margin-left:450px">
+                        <option value="">-- Toutes les catégories --</option>
+
+                        {% for categorie in categories %}
+                            <option value="{{ categorie.id }}">{{ categorie.label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <button style="margin-right: 70px"type="submit" class="btn btn-outline-success">Filtrer</button>
+                </div>
+            </div>
+        </form>
+    </div>
     <div class="gallery-slider swiper" style="display: block; margin-left: auto; margin-right: auto; ">
+        <br>
+        <br>
+
         <div class="swiper-wrapper align-items-center">
+            {% set i = 0 %}
+
             {% for produit in produits %}
-                <div class="swiper-slide" style="background-color: #f8f9fa; border-radius: 10px; padding: 20px;">
+                <div class="swiper-slide" style="background-color: #f8f9fa; border-radius: 10px; padding: 20px;" onclick="showDetails('{{ produit.nom }}', '{{ produit.description }}', '{{ produit.prix }}')">
                     <a class="gallery-lightbox" href="{{ asset('images/produits/' ~ produit.image) }}">
                         <img src="{{ asset('images/produits/' ~ produit.image) }}" class="img-fluid" alt="{{ produit.nom }}">
                     </a>
@@ -12,8 +35,11 @@
                         <h5 class="card-title" style="font-family: 'Microsoft Tai Le';font-weight: bold" >Nom : {{ produit.nom }}</h5>
                         <p class="card-text" style="font-family: 'Microsoft Tai Le';"> Description : {{ produit.description }}</p>
                         <p class="card-text" style="font-family: 'Microsoft Tai Le';font-weight: bold"> Prix : {{ produit.prix }} Franc</p>
+                        <img src="{{ listqr[i] }}" alt="qr">
                     </div>
                 </div>
+                {% set i=i+1 %}
+
             {% endfor %}
         </div>
 
@@ -22,4 +48,51 @@
         <br>
         <div class="swiper-pagination"></div>
     </div>
+
+    <script>
+        function showDetails(nom, description, prix) {
+            alert("Nom : " + nom + "\nDescription : " + description + "\nPrix : " + prix + " Franc");
+        }
+    </script>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+{% endblock %}
+{% block events %}
+    <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+        <h2>Evènements</h2>
+
+    </div>
+    {% for evenement in evenements %}
+    <div class="row">
+
+
+        <div class="col-lg-3 col-md-6">
+            <div class="box" data-aos="fade-up" >
+                <h3>{{ evenement.titre }}</h3>
+                <a><img src="\uploads\my_events\{{ evenement.image }}" width="160px"></a>
+                <h5><span>{{ evenement.Lieu }}</span></h5>
+                <ul>
+                    <li>Merci de nous rejoindre le </li>
+                    <p>{{ evenement.date ? evenement.date|date('Y-m-d') : '' }}</p>
+                </ul>
+                <div class="btn-wrap">
+                    <button type="submit" class="btn btn-primary" >Participer</button>
+
+
+                </div>
+            </div>
+        </div>
+
+        {% else %}
+
+            <p colspan="6">Pas d'évènements</p>
+
+        {% endfor %}
+
 {% endblock %}

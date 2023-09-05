@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Culture Statistics{% endblock %}
+
+{% block body %}
+    <h1>Culture Statistics</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Culture</th>
+            <th>Count</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for culture, count in cultureCounts %}
+            <tr>
+                <td>{{ culture }}</td>
+                <td>{{ count }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="row">
+
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Ajouter Culture </h5>
+
+                <!-- General Form Elements -->
+
+                {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+
+                <label for="inputText" class="col-sm-4 col-form-label">type</label>
+                <div class="col-sm-20">
+                    {{ form_widget(form.type,{'attr':{'class':'form-control'}}) }}
+
+                </div>
+                {{ form_errors(form.type,{'attr':{'class':'text-danger'}}) }}
+
+
+                <label for="inputText" class="col-sm-4 col-form-label">date_plantation</label>
+                <div class="col-sm-20">
+                    {{ form_widget(form.date_planting,{'attr':{'class':'form-control'}}) }}
+
+                </div>
+                {{ form_errors(form.date_planting,{'attr':{'class':'text-danger'}}) }}
+
+
+                <p>
+                    {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+                    <label for="inputText" class="col-sm-4 col-form-label">quantité</label>
+                <div class="col-sm-20">
+                    {{ form_widget(form.quantite,{'attr':{'class':'form-control'}}) }}
+
+                </div>
+                {{ form_errors(form.quantite,{'attr':{'class':'text-danger'}}) }}
+
+                </p>
+                {{ form_end(form) }}
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+{% endblock %}

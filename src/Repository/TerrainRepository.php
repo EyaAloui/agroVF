@@ -38,7 +38,15 @@ class TerrainRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-
+    public function charteRepository()
+    {
+        return $this->createQueryBuilder('t')
+            ->select('COUNT(t.id) as nbrterrain, c.type as culture')
+            ->innerJoin('t.culture', 'c')
+            ->groupBy('c.type')
+            ->getQuery()
+            ->getResult();
+    }
 //    /**
 //     * @return Terrain[] Returns an array of Terrain objects
 //     */

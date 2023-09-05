@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employe index{% endblock %}
+
+{% block body %}
+    <h1>Liste des employés </h1>
+<div class="card">
+            <div class="card-header">
+                <a class="btn btn-outline-success" href="{{ path('app_employe_new') }} "> 
+                     Nouveau employé
+                </a>
+            </div>
+            <div class="card-body">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Cin</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employe in employes %}
+            <tr>
+                <td>{{ employe.id }}</td>
+                <td>{{ employe.nom }}</td>
+                <td>{{ employe.prenom }}</td>
+                <td>{{ employe.cin }}</td>
+                <td>
+                    <a class="btn btn-outline-primary" href="{{ path ('app_employe_show', {'id': employe.id}) }}">afficher</a>
+                    <a  class="btn btn-outline-primary" href="{{ path ('app_employe_edit', {'id': employe.id}) }}">modifier</a>
+                    <a  class="btn btn-outline-primary" href="{{ path ('app_employe_delete', {'id': employe.id}) }}">supprimer</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   
+{% endblock %}

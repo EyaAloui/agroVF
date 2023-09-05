@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+    <h1>Culture index</h1>
+    <div class="card">
+        <div class="card-header">
+            <a class="btn btn-outline-primary" href="{{ path('app_culture_new') }} ">
+                une nouvelle culture
+            </a>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Type</th>
+                    <th>date_plantation</th>
+                    <th>Quantité</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for culture in cultures %}
+                    <tr>
+                        <td>{{ culture.id }}</td>
+                        <td>{{ culture.type }}</td>
+                        <td>{{ culture.datePlanting ? culture.datePlanting|date('Y-m-d') : '' }}</td>
+                        <td>{{ culture.quantite }}</td>
+                        <td>
+                            <a class="btn btn-outline-info" href="{{ path('app_culture_show', {'id': culture.id}) }}">afficher</a>
+                            <a class="btn btn-outline-success" href="{{ path('app_culture_edit', {'id': culture.id}) }}">modifier</a>
+                            <a class="btn btn-outline-success" href="{{ path('app_culture_delete', {'id': culture.id}) }}">supprimer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <a class="btn btn-outline-info"  href="{{ path('app_culture_generate_pdf') }}">PDF</a>
+            <a class="btn btn-outline-success"  href="{{ path('app_culture_stats')}}">stat</a>
+        </div>
+    </div>
+
+
+{% endblock %}

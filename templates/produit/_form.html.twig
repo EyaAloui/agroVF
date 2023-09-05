@@ -6,7 +6,7 @@
             {{ form_label(form.nom, null, {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
             <div class="col-sm-10">
                 {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
-                <div style="color: #ff253a; font-family: Cambria">
+                <div style="color: red">
                     {{ form_errors(form.nom) }}
                 </div>
             </div>
@@ -15,7 +15,7 @@
             {{ form_label(form.prix, null, {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
             <div class="col-sm-10">
                 {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
-                <div style="color: #ff253a; font-family: Cambria">
+                <div style="color: red">
                     {{ form_errors(form.prix) }}
                 </div>
             </div>

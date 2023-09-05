@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ParticipationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ParticipationRepository::class)]
 class Participation
@@ -14,14 +15,11 @@ class Participation
     #[ORM\Column]
     private ?int $id = null;
 
+
     #[ORM\Column(type: Types::TIME_MUTABLE)]
+    #[Assert\NotBlank(message:"Ce champs est obligatoire")]
     private ?\DateTimeInterface $heure = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $nom_utilisateur = null;
-
-    #[ORM\Column]
-    private ?int $telphone = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -48,29 +46,7 @@ class Participation
         return $this;
     }
 
-    public function getNomUtilisateur(): ?string
-    {
-        return $this->nom_utilisateur;
-    }
 
-    public function setNomUtilisateur(string $nom_utilisateur): self
-    {
-        $this->nom_utilisateur = $nom_utilisateur;
-
-        return $this;
-    }
-
-    public function getTelphone(): ?int
-    {
-        return $this->telphone;
-    }
-
-    public function setTelphone(int $telphone): self
-    {
-        $this->telphone = $telphone;
-
-        return $this;
-    }
 
     public function getIdUtilisateur(): ?Utilisateur
     {
@@ -83,6 +59,21 @@ class Participation
 
         return $this;
     }
+
+
+    public function getEmailUtilisateur(): ?string
+    {
+        return $this->id_utilisateur ? $this->id_utilisateur->getEmail() : null;
+    }
+
+
+    public function setEmailUtilisateur(Utilisateur $email_utilisateur): self
+    {
+        $this->email_utilisateur = $email_utilisateur;
+
+        return $this;
+    }
+
 
     public function getEvenement(): ?Evenement
     {

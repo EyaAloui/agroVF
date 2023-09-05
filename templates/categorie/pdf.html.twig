@@ -1,0 +1,68 @@
+<h3 class="Categorie">Liste des produits par categorie</h3>
+
+<br><br>
+<table style="border-collapse: collapse; width: 100%;">
+    <thead style="background-color: #343a40; color: #fff; font-weight: bold;">
+    <tr>
+        <td style="padding: 10px;">Category</td>
+        <td style="padding: 10px;">Product Name</td>
+        <td style="padding: 10px;">Price</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for category in categories %}
+        <tr style="background-color: #f8f9fa;">
+            <td style="padding: 10px; font-weight: bold; color: #0b5ed7;">{{ category.label }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% if produits[category.id] is empty %}
+            <tr>
+                <td colspan="3">No products found for this category</td>
+            </tr>
+        {% else %}
+            {% for product in produits[category.id] %}
+                <tr style="background-color: #f8f9fa;">
+                    <td></td>
+                    <td style="padding: 10px;">{{ product.nom }}</td>
+                    <td style="padding: 10px;">{{ product.prix }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+<h2 class="Categorie">AgroEasy Application</h2>
+<h3 class="Categorie">Contacts-mail : AgroEasy@noreply.com</h3>
+<h3 class="Categorie">Contacts-tel : +216 78 451 788</h3>
+<style>
+    body {
+        border: 2px solid #757575;
+        padding: 20px;
+    }
+
+    .Categorie{
+        text-align: center;
+        color: #7773ff;
+    }
+
+    .product {
+        border: 1px solid rgba(225, 225, 225, 0.38);
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .product h2 {
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+
+    .product p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .product p:last-child {
+        font-weight: bold;
+    }
+</style>

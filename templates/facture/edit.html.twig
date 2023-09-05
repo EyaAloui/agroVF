@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Facture{% endblock %}
+
+{% block body %}
+    <h1><strong>Modifier Facture</strong></h1>
+
+<p>{{ include('facture/_form.html.twig', {'class': 'btn btn-outline-info my-3', 'button_label': 'Modifier',}) }}</p>
+     <p><a  class='btn btn-outline-success ' href="{{ path('app_facture_index') }}">Retour</a></p>
+  
+
+    {{ include('facture/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Terrain{% endblock %}
+
+{% block body %}
+    <div class="row">
+
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Ajouter terrain </h5>
+
+                <!-- General Form Elements -->
+
+                {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+
+                <label for="inputText" class="col-sm-4 col-form-label"><strong>numero</strong></label>
+                <div class="col-sm-20">
+                    {{ form_widget(form.numero,{'attr':{'class':'form-control'}}) }}
+
+                </div>
+                {{ form_errors(form.numero,{'attr':{'class':'text-danger'}}) }}
+
+
+                <label for="inputText" class="col-sm-10 col-form-label"><strong>surface m</strong></label>
+                <div class="col-sm-20">
+                    {{ form_widget(form.surface,{'attr':{'class':'form-control'}}) }}
+
+                </div>
+                {{ form_errors(form.surface,{'attr':{'class':'text-danger'}}) }}
+
+
+                {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+                <label for="inputText" class="col-sm-4 col-form-label"><strong>lieu</strong></label>
+                <div class="col-sm-20">
+                    {{ form_widget(form.lieu,{'attr':{'class':'form-control'}}) }}
+
+                </div>
+                {{ form_errors(form.lieu,{'attr':{'class':'text-danger'}}) }}
+
+
+                <p>
+                    {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+                    <label for="inputText" class="col-sm-4 col-form-label"><strong>culture</strong></label>
+                <div class="col-sm-20">
+                    {{ form_widget(form.culture,{'attr':{'class':'form-control'}}) }}
+
+                </div>
+                {{ form_errors(form.culture,{'attr':{'class':'text-danger'}}) }}
+
+                </p>
+                {{ form_end(form) }}
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+{% endblock %}

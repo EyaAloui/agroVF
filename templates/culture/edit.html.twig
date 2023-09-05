@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Edit Culture</h1>
+    <div class="row">
+        <div  style="display: flex;align-items: center;justify-content: center;margin-top: 20px; padding: 10px;">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"> modifier </h5>
+                    {{ form_start(form) }}
+                    <p>
+                        <label for="inputText" class="col-sm-4 col-form-label">type</label>
+                    <div class="col-sm-10">
+                        {{ form_widget(form.type,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                    </p>
+                    <p>
+                        <label for="Text" class="col-sm-4 col-form-label">date_plantation</label>
+                    <div class="col-sm-10">
+                        {{ form_widget(form.date_planting,{'attr':{'class':'form-control'}}) }}
+
+                    </div>
+                    </p>
+                    <p>
+                        <label for="inputText" class="col-sm-4 col-form-label">quantité</label>
+                    <div class="col-sm-10">
+                        {{ form_widget(form.quantite,{'attr':{'class':'form-control'}}) }}
+                    </div>
+                    </p>
+
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

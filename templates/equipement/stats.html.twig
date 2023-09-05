@@ -1,0 +1,30 @@
+{# templates/equipement/stats.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques des équipements{% endblock %}
+
+{% block body %}
+    <h1>Statistiques des équipements</h1>
+
+    <table class="table">
+        
+        <thead>
+            <tr>
+                <th>État</th>
+                
+                <th>Nombre d'équipements</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for etat, count in equipementCounts %}
+                <tr>
+                    <td>{{ etat }}</td>
+
+                    <td>{{ count }}</td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

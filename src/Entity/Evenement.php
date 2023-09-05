@@ -7,8 +7,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: EvenementRepository::class)]
+#[Vich\Uploadable]
 class Evenement
 {
     #[ORM\Id]
@@ -17,23 +21,51 @@ class Evenement
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"Ce champs est obligatoire")]
+    #[Assert\Length(
+        min:5 ,
+        minMessage: 'Veillez introduire au minimum 5 caractères.',)]
     private ?string $titre = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_debut = null;
+    #[Assert\NotBlank(message:"Ce champs est obligatoire")]
+    #[Assert\GreaterThan("today", message:"La date de votre évènement ne doit pas être en passé!")]
+    private ?\DateTimeInterface $date = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_fin = null;
-
-    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"Ce champs est obligatoire")]
+    #[Assert\Length(
+        min:10 ,
+        minMessage: 'Veillez introduire au minimum 10 caractères.',)]
     private ?string $description = null;
 
     #[ORM\OneToMany(mappedBy: 'evenement', targetEntity: Participation::class)]
     private Collection $participants;
 
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"Ce champs est obligatoire")]
+    #[Assert\Length(
+        min:5 ,
+        minMessage: 'Veillez introduire au minimum 5 caractères.',)]
+    private ?string $Lieu = null;
+
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private $image;
+
+
+    #[Vich\UploadableField(mapping: "my_events_uploads", fileNameProperty: "image")]
+    private $imageFile = null;
+
+
+    #[ORM\Column(type: "datetime", nullable: true)]
+    private $updatedAt;
+
+    #[ORM\ManyToMany(targetEntity: Utilisateur::class, inversedBy: 'evenements')]
+    private Collection $Utilisateur;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
+        $this->Utilisateur = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -53,29 +85,18 @@ class Evenement
         return $this;
     }
 
-    public function getDateDebut(): ?\DateTimeInterface
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->date_debut;
+        return $this->date;
     }
 
-    public function setDateDebut(\DateTimeInterface $date_debut): self
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->date_debut = $date_debut;
+        $this->date = $date;
 
         return $this;
     }
 
-    public function getDateFin(): ?\DateTimeInterface
-    {
-        return $this->date_fin;
-    }
-
-    public function setDateFin(\DateTimeInterface $date_fin): self
-    {
-        $this->date_fin = $date_fin;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {
@@ -115,6 +136,80 @@ class Evenement
                 $participant->setEvenement(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLieu(): ?string
+    {
+        return $this->Lieu;
+    }
+
+    public function setLieu(string $Lieu): self
+    {
+        $this->Lieu = $Lieu;
+
+        return $this;
+    }
+
+    public function __toString() {
+        return $this->id;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): void
+    {
+        $this->image = $image;
+    }
+
+    public function setImageFile(?File $image = null): void
+    {
+        $this->imageFile = $image;
+
+        if ($image) {
+            $this->updatedAt = new \DateTimeImmutable('now');
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * @return Collection<int, Utilisateur>
+     */
+    public function getUtilisateur(): Collection
+    {
+        return $this->Utilisateur;
+    }
+
+    public function addUtilisateur(Utilisateur $utilisateur): self
+    {
+        if (!$this->Utilisateur->contains($utilisateur)) {
+            $this->Utilisateur->add($utilisateur);
+        }
+
+        return $this;
+    }
+
+    public function removeUtilisateur(Utilisateur $utilisateur): self
+    {
+        $this->Utilisateur->removeElement($utilisateur);
 
         return $this;
     }

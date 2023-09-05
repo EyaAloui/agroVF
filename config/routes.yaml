@@ -1,3 +1,27 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+app_categorie:
+  resource: App\Controller\CategorieController
+  type: annotation
+
+app_chart:
+  path: 'produit/stat/chart'
+  controller: App\Controller\ProduitController::barChartAction
+  methods: ['GET']
+
+app_chart_terrain:
+  path: 'terrain/stats/chart'
+  controller: App\Controller\TerrainController::barChartAction
+  methods: [ 'GET' ]
+
+produit_list:
+  path: 'produit/produitsjson'
+  controller: 'App\Controller\ProduitController::JsonGet'
+
+
+produit_alllist:
+  path: '/getall/produitsJson'
+  controller: 'App\Controller\ProduitController::getProduct'
+
+

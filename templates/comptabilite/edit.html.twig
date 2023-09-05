@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Comptabilite{% endblock %}
+
+{% block body %}
+    <h1>Modifier Comptabilite</h1>
+
+    {{ include('comptabilite/_form.html.twig', {'class': 'btn-outline-info','button_label': 'Modifier'}) }}
+
+    <p><a  class="btn btn-outline-success" href="{{ path('app_comptabilite_index') }}">Retour</a></p>
+
+    {{ include('comptabilite/_delete_form.html.twig') }}
+{% endblock %}

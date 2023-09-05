@@ -1,0 +1,360 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block header %}
+
+  <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+
+            <a href="index.html" class="logo me-auto"><img src="front/assets/img/logo.png" alt=""></a>
+            <a href="index.html" class="logo me-auto"><img src="front/assets/img/logo1.png" alt="" width="60%"></a>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a class="nav-link scrollto " href="#hero">Accueil</a></li>
+                    <li><a class="nav-link scrollto" href="#about">A propos</a></li>
+                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                    <li class="dropdown"><a href="#departments"><span>Produits</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li class="dropdown"><a href="#"><span>Végétaux</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a href="#">Deep Drop Down 1</a></li>
+                                    <li><a href="#">Deep Drop Down 2</a></li>
+                                    <li><a href="#">Deep Drop Down 3</a></li>
+                                    <li><a href="#">Deep Drop Down 4</a></li>
+                                    <li><a href="#">Deep Drop Down 5</a></li>
+                                </ul>
+                            <li class="dropdown"><a href="#"><span>Animaux</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a href="#">Deep Drop Down 1</a></li>
+                                    <li><a href="#">Deep Drop Down 2</a></li>
+                                    <li><a href="#">Deep Drop Down 3</a></li>
+                                    <li><a href="#">Deep Drop Down 4</a></li>
+                                    <li><a href="#">Deep Drop Down 5</a></li>
+                                </ul>
+
+                        </ul>
+                    </li>
+                    <li><a class="nav-link scrollto" href="#pricing">Evènements</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                      <li class="nav-item dropdown pe-3">
+
+                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+
+                    <span class="d-none d-md-block dropdown-toggle ps-2">{{ app.user.prenom}} {{ app.user.nom}}</span>
+                </a><!-- End Profile Iamge Icon -->
+
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                    <li class="dropdown-header">
+                        <h6> {{ app.user.prenom}}</h6>
+                        <span> Hello {{ app.user.email}}</span>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" >
+                            <i class="bi bi-person"></i>
+                            <span>Mon Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="#contact">
+                            <i class="bi bi-question-circle"></i>
+                            <span>Need Help?</span>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="{{ path('app_logout') }}">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Déconnexion</span>
+                        </a>
+                    </li>
+
+                </ul><!-- End Profile Dropdown Items -->
+            </li><!-- End Profile Nav -->
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+          
+
+        </div>
+    </header><!-- End Header -->
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+        /* Styles pour le conteneur du carrousel */
+        .carrousel-container {
+            overflow: hidden;
+            width: 100%;
+            max-width: 800px; /* Ajustez la largeur selon vos besoins */
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Styles pour le carrousel */
+        .carrousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carte {
+            flex: 0 0 100%;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            background-color: rgba(255, 0, 0, 0.3); /* Rouge transparent */
+            margin-right: 20px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        /* Styles pour les boutons de navigation */
+        .btn-prev, .btn-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 15px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            z-index: 1;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .btn-prev:hover, .btn-next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .btn-prev {
+            left: 10px;
+        }
+
+        .btn-next {
+            right: 10px;
+        }
+
+        /* Styles pour le contenu de la carte */
+        .carte h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #fff; /* Texte en blanc */
+        }
+
+        .carte p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #fff; /* Texte en blanc */
+        }
+    </style>
+
+    <div class="carrousel-container">
+        <button class="btn-prev">←</button>
+        <div class="carrousel">
+            {% for opportinute in opportinute %}
+            <div class="carte">
+                <h2><a href="">{{ opportinute.Titre }}</a></h2>
+                  <p>{{ opportinute.DateDebut ? opportinute.DateDebut|date('Y-m-d') : '' }} - {{ opportinute.Datefin ? opportinute.Datefin|date('Y-m-d') : ''}}</p>
+
+                <p>Ceci est le contenu de la première carte.</p>
+            </div>
+           {% endfor %}
+            <!-- Ajoutez davantage de cartes ici -->
+        </div>
+        <button class="btn-next">→</button>
+    </div>
+
+    <script>
+        const carrousel = document.querySelector('.carrousel');
+        const cartes = document.querySelectorAll('.carte');
+        const btnPrev = document.querySelector('.btn-prev');
+        const btnNext = document.querySelector('.btn-next');
+
+        let index = 0;
+        let autoSlideInterval;
+
+        // Fonction pour passer à la carte suivante
+        function nextSlide() {
+            index = (index + 1) % cartes.length;
+            updateCarrousel();
+        }
+
+        // Fonction pour activer l'animation automatique
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 3000); // Change de carte toutes les 3 secondes
+        }
+
+        // Fonction pour arrêter l'animation automatique
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        btnPrev.addEventListener('click', () => {
+            stopAutoSlide();
+            index = (index - 1 + cartes.length) % cartes.length;
+            updateCarrousel();
+            startAutoSlide();
+        });
+
+        btnNext.addEventListener('click', () => {
+            stopAutoSlide();
+            nextSlide();
+            startAutoSlide();
+        });
+
+        // Démarrez l'animation automatique au chargement de la page
+        startAutoSlide();
+
+        function updateCarrousel() {
+            const offsetX = -index * 100; // Largeur de la carte
+            carrousel.style.transform = `translateX(${offsetX}%)`;
+
+            // Réinitialisez la transformation pour toutes les cartes
+            cartes.forEach((carte, i) => {
+                carte.style.transform = i === index ? 'scale(1)' : 'scale(0.9)';
+                carte.style.boxShadow = i === index ? '0px 4px 8px rgba(0, 0, 0, 0.2)' : 'none';
+            });
+        }
+    </script>

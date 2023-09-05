@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>New produit added</title>
+</head>
+<body>
+<p>Dear user,</p>
+<p>A new produit has been added:</p>
+<ul>
+    <li>Name: {{ produit.nom }}</li>
+    <li>Description: {{ produit.description }}</li>
+    <li>Price: {{ produit.prix }} €</li>
+    <li>Category: {{ produit.categorie.label }}</li>
+</ul>
+<p>Thank you for using our application!</p>
+</body>
+</html>

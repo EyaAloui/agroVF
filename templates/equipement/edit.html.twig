@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Equipement{% endblock %}
+
+{% block body %}
+    
+  <main style="
+           display: flex;align-items: center;
+            position: fixed;
+            left: 200px;
+            bottom: 200px;
+            width: 90%;
+            justify-content: center;
+           
+height: 400px;
+            text-align: center;">
+  
+ <div class="row">
+        <div  style="display: flex;align-items: center;justify-content: center;margin-top: 150px; padding: 10px;">
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"> modifier </h5>
+
+                    <!-- General Form Elements -->
+                    {{ form_start(form) }}
+                    
+                    <p>
+                    <label for="inputText" class="col-sm-4 col-form-label">type</label>
+                    <div class="col-sm-10">
+                        {{ form_widget(form.type,{'attr':{'class':'form-control'}}) }}
+                    </div>
+</p>
+<p>
+                    <label for="Text" class="col-sm-4 col-form-label">marque</label>
+                    <div class="col-sm-10">
+                        {{ form_widget(form.marque,{'attr':{'class':'form-control'}}) }}
+
+                    </div>
+                    </p>
+                    <p>
+                    <label for="inputText" class="col-sm-4 col-form-label">disponible</label>
+                    <div class="col-sm-10">
+                        {{ form_widget(form.disponnible,{'attr':{'class':'form-control'}}) }}
+                    </div>
+</p>
+                    
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    
+{% endblock %}

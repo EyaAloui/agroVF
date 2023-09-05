@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Equipement{% endblock %}
+
+{% block body %}
+<main style="
+            position: fixed;
+           
+            left: 400px;
+            bottom: 250px;
+            width: 60%;
+             height: 280px;
+            text-align: center;">
+           
+    <h1>Equipement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ equipement.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ equipement.type }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>{{ equipement.marque }}</td>
+            </tr>
+            <tr>
+                <th>Disponnible</th>
+                <td>{{ equipement.disponnible ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ equipement.etat }}</td>
+            </tr>
+            <tr>
+                <th>Matricule</th>
+                <td>{{ equipement.matricule }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-outline-primary" href="{{ path('app_equipement_index') }}">retour à la liste</a>
+
+    <a class="btn btn-outline-success" href="{{ path('app_equipement_edit', {'id': equipement.id}) }}">modifier</a>
+    <a class="btn btn-outline-primary" href="{{ path('app_equipement_generate_pdf') }}" >Download PDF</a>
+
+    {{ include('equipement/_delete_form.html.twig') }}
+{% endblock %}

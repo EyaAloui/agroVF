@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+
+   
+
+
+
+
+
+{% block body %}
+
+  
+          <input id="myInput" type="text" value="" name="Search" class="form-control" placeholder=" search" autofocus>
+
+            
+
+
+<main style="
+            text-align: center;">
+   
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-20">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><strong>Liste des comptabilites</strong></h5>
+
+
+
+    <table id="myTable" class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Valeur</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for comptabilite in comptabilites %}
+            <tr>
+                <td>{{ comptabilite.id }}</td>
+                <td>{{ comptabilite.dateComptabilite ? comptabilite.dateComptabilite|date('Y-m-d') : '' }}</td>
+                <td>{{ comptabilite.valeur }}</td>
+               
+                <td>
+                    <a class="btn btn-outline-info" href="{{ path('app_comptabilite_show', {'id': comptabilite.id}) }}">afficher</a>
+                    <a class="btn btn-outline-success" href="{{ path('app_comptabilite_edit', {'id': comptabilite.id}) }}">modifier</a>
+                    <a class="btn btn-outline-danger" href="{{ path('app_comptabilite_delete', {'id': comptabilite.id}) }}">supprimer</a>
+               
+               
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">pas de comptabilite</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+   
+
+
+
+    <a class="btn btn-outline-success"  href="{{ path('app_comptabilite_new') }}">Creer</a>
+   
+
+    
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js%22%3E"</script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+</div>
+{% endblock %}

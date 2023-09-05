@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Terrain index{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>Terrain index</h1>
+    <div class="card">
+        <div class="card-header">
+            <a class="btn btn-outline-primary" href="{{ path('app_terrain_new') }} ">nouveau Terrain</a>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Numero</th>
+                    <th>Surface</th>
+                    <th>Lieu</th>
+                    <th>culture</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for terrain in terrains %}
+                    <tr>
+                        <td>{{ terrain.id }}</td>
+                        <td>{{ terrain.numero }}</td>
+                        <td>{{ terrain.surface }}</td>
+                        <td>{{ terrain.lieu }}</td>
+                        <td>{{ terrain.culture }}</td>
+                        <td>
+                            <a class="btn btn-outline-info" href="{{ path('app_terrain_show', {'id': terrain.id}) }}">afficher</a>
+                            <a class="btn btn-outline-success" href="{{ path('app_terrain_edit', {'id': terrain.id}) }}">modifier</a>
+                            <a class="btn btn-outline-success" href="{{ path('app_terrain_delete', {'id': terrain.id}) }}">supprimer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <a class="btn btn-outline-primary" href="{{ path('app_chart_terrain') }} ">consulter stats</a>
+        </div>
+    </div>
+
+{% endblock %}

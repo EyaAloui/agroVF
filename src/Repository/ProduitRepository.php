@@ -50,6 +50,39 @@ class ProduitRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    /**
+     * @return Produit[] Returns an array of Produit objects
+     */
+    public function findByCategorie(Categorie $categorie)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.categorie = :categorie')
+            ->setParameter('categorie', $categorie)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findProductsByCategory($categoryId)
+    {
+        return $this->createQueryBuilder('p')
+            ->join('p.category', 'c')
+            ->andWhere('c.id = :categoryId')
+            ->setParameter('categoryId', $categoryId)
+            ->getQuery()
+            ->getResult();
+    }
+
+
+    public function chartRepository()
+    {
+        return $this->createQueryBuilder('p')
+            ->select('COUNT(p.id) as nbrprod, c.label as categorie')
+            ->innerJoin('p.categorie', 'c')
+            ->groupBy('c.label')
+            ->getQuery()
+            ->getResult();
+    }
+
 
 //    public function findOneBySomeField($value): ?Produit
 //    {

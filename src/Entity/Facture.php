@@ -3,8 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\FactureRepository;
+
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\Invoice;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
+use DateTime;
+
 
 #[ORM\Entity(repositoryClass: FactureRepository::class)]
 class Facture
@@ -13,21 +20,31 @@ class Facture
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
+   
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_facture = null;
+   
+    
+    
+    
 
     #[ORM\Column(length: 255)]
     private ?string $type = null;
-
+    #[Assert\Positive(message:"le montant doit être positif")]
+    #[Assert\Type(
+        type: 'float',
+         )] #[Assert\NotBlank(message:"le champ disponnible est obligatoir")]
     #[ORM\Column]
     private ?float $montant_totale = null;
 
     #[ORM\ManyToOne(inversedBy: 'factures')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Comptabilite $comptabilite = null;
+    
+    
+   
 
-
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -39,7 +56,7 @@ class Facture
     }
 
     public function setDateFacture(\DateTimeInterface $date_facture): self
-    {
+    { 
         $this->date_facture = $date_facture;
 
         return $this;
@@ -73,11 +90,17 @@ class Facture
     {
         return $this->comptabilite;
     }
-
+    
     public function setComptabilite(?Comptabilite $comptabilite): self
     {
         $this->comptabilite = $comptabilite;
 
+        // Mettre à jour la valeur de Comptabilité
+        $comptabilite->setValeur($comptabilite->calculerRevenu());
+
         return $this;
     }
+   
+
 }
+

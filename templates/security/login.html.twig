@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <title>AgroEasy-Login</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+
+        <link href="front/assets/img/logo.png" rel="icon">
+        <link href="front/assets/img/logo.png" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    {% endblock %}
+    {% block Css %}
+        <!-- Vendor CSS Files -->
+        <link href="front/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <link href="front/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+        <link href="front/assets/vendor/aos/aos.css" rel="stylesheet">
+        <link href="front/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="front/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="front/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="front/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="front/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="front/assets/css/style.css" rel="stylesheet">
+    {% endblock %}
+
+</head>
+
+<body>
+{% block body %}
+    <!-- ======= Top Bar ======= -->
+    <div id="topbar" class="d-flex align-items-center fixed-top">
+        <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+            <div class="align-items-center d-none d-md-flex">
+                <i class="bi bi-clock"></i> Lundi - Dimanche, 6AM to 6PM
+            </div>
+            <div class="d-flex align-items-center">
+                <i class="bi bi-phone"></i> Contactez-nous +216 57 458 544
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+<!-- ======= Header ======= -->
+{% block header%}
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+
+            <a href="index.html" class="logo me-auto"><img src="front/assets/img/logo.png" alt=""></a>
+            <a href="index.html" class="logo me-auto"><img src="front/assets/img/logo1.png" alt="" width="60%"></a>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a class="nav-link scrollto " href="#hero">Accueil</a></li>
+                    <li><a class="nav-link scrollto" href="#about">A propos</a></li>
+                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                    <li class="dropdown"><a href="#departments"><span>Produits</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li class="dropdown"><a href="#"><span>Végétaux</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a href="#">Deep Drop Down 1</a></li>
+                                    <li><a href="#">Deep Drop Down 2</a></li>
+                                    <li><a href="#">Deep Drop Down 3</a></li>
+                                    <li><a href="#">Deep Drop Down 4</a></li>
+                                    <li><a href="#">Deep Drop Down 5</a></li>
+                                </ul>
+                            <li class="dropdown"><a href="#"><span>Animaux</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a href="#">Deep Drop Down 1</a></li>
+                                    <li><a href="#">Deep Drop Down 2</a></li>
+                                    <li><a href="#">Deep Drop Down 3</a></li>
+                                    <li><a href="#">Deep Drop Down 4</a></li>
+                                    <li><a href="#">Deep Drop Down 5</a></li>
+                                </ul>
+
+                        </ul>
+                    </li>
+                    <li><a class="nav-link scrollto" href="#pricing">Evènements</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+            <a href="{{ path('app_login')}}" class="appointment-btn scrollto"><span class="d-none d-md-inline"></span>Se connecter</a>
+
+        </div>
+    </header><!-- End Header -->
+{% endblock %}
+
+
+
+{% block contenu %}
+<main style="
+            position: fixed;
+            left: 400px;
+            bottom: 100px;
+            width: 50%;
+            text-align: center;">
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <h1 class="h3 mb-3 font-weight-normal">Merci de se connecter</h1>
+    <label for="inputEmail">Email</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+<br>
+    <button class="btn btn-lg btn-primary" style="background-color:green ; border-color:green ; color:white" type="submit">
+        Sign in
+    </button>
+
+  <p><a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a></p>  
+</form>
+
+<p> Si vous n'avez pas un compte merci de <a href="{{ path('app_register') }}">S'inscrire</a></p>
+{% endblock %}

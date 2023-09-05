@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evenement index{% endblock %}
+
+{% block body %}9
+
+    <h1>Evenement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Date d'évènement</th>
+                <th>Lieu</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evenement in evenements %}
+            <tr>
+                <td>{{ evenement.id }}</td>
+                <td>{{ evenement.titre }}</td>
+                <td>{{ evenement.date ? evenement.date|date('Y-m-d') : '' }}</td>
+                <td>{{ evenement.Lieu }}</td>
+                <td><img src="\uploads\my_events\{{ evenement.image }}" width="60px"></td>
+                <td>
+                    <a href="{{ path('app_evenement_show', {'id': evenement.id}) }}">Voir</a>
+                    <a href="{{ path('app_evenement_edit', {'id': evenement.id}) }}">Edite</a>
+                    <a href="{{ path('app_evenement_delete', {'id': evenement.id}) }}">Supprimer</a>                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Pas d'évènements</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_evenement_new') }}">Ajouter un évènement</a>
+{% endblock %}
